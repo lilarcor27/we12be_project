@@ -1,0 +1,47 @@
+.form_update_container {
+	position: absolute;
+	left: 0; top: 0;
+	width: 100%; height: 100%;
+	display: none;
+	justify-content: center;
+	align-items: center;
+	background-color: rgba(0, 0, 0, 0.3);
+	z-index: 400;
+}
+.form_update_container.appear {
+	display: flex;
+}
+.form_update_wrapper {
+	position: relative;
+	
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	
+	background-color: rgba(255, 255, 255, 0.9);
+	padding: 20px;
+	
+	border-radius: 7px;
+}
+.form_update_pwinput {
+	padding: 10px 3px 3px 3px;
+}
+.form_update_submit {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	padding-top: 3px;
+}
+.form_update_submit input {
+	background-color: #ccc;
+	margin: 3px;
+	border: 1px solid black;
+	width: 50%;
+}
+
+.form_update_cancel {
+	position: absolute;
+	left: 93%; top: 10%;
+	transform: translate(-50%, -50%);
+	font-family: "Raleway", sans-serif;
+}

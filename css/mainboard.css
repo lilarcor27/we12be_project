@@ -1,0 +1,140 @@
+#mainboard {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100vw;
+	transition-property: opacity;
+	transition-duration: 1s;
+	display: block;
+	z-index: 1;
+	
+	opacity: 0;
+}
+
+.board {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	opacity: 0;
+	overflow: hidden;
+	transition: opacity 1s linear;
+}
+
+.board.board_disappear {
+	opacity: 0;
+}
+
+.board.board_appear {
+	opacity: 1;
+}
+
+.subboard {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+.images {
+	position: relative;
+	top: 0;	left: 0;
+	overflow: hidden;
+}
+
+.images_right { float: right; }
+.images_left { float: left; }
+.images_right .curtain { left: 0; }
+.images_left .curtain { right: 0; }
+.texts_up {	transform: translateY(70%); }
+.texts_left { transform: translateX(-30%); }
+.texts_right { transform: translateX(30%); }
+
+.curtain {
+	position: absolute;
+	top: 0; bottom: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #111;
+}
+
+.aimage {
+	position: absolute;
+	top: 0;	left: 0;
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+	background-repeat: no-repeat;
+	transform: scale(1.3);
+}
+
+.gradient {
+	position: absolute;
+	top: 0;	left: 0;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(180deg, rgba(16,16,16,0) 0%, rgba(16,16,16,0) 72%, rgba(16,16,16,0.56) 91%, rgba(16,16,16,1) 98%, rgba(16,16,16,1) 100%);
+}
+
+.image_overflow_wrapper {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+.image_overflow_wrapper.left {
+	width: 99%;
+	margin-left: 1%;
+}
+.image_overflow_wrapper.right {
+	width: 99%;
+	margin-right: 1%;
+}
+.image_overflow_wrapper.top {
+	height: 99%;
+	margin-top: 1%;
+}
+.image_overflow_wrapper.bottom {
+	height: 99%;
+	margin-bottom: 1%;
+}
+
+
+.texts {
+	opacity: 0;
+}
+
+.divs {
+	opacity: 0;
+}
+
+.appear_image .aimage { 
+	transition-property: opacity, transform;
+	transition-duration: 1.7s;
+	transition-timing-function: ease-in-out;
+	opacity: 1;
+	transform: scale(1);
+}
+.appear_image .curtain { 
+	transition-property: width; 
+	transition-duration: 1.7s; 
+	transition-timing-function: ease-in-out; 
+	width: 0; 
+}
+.appear_div.texts { 
+	transition-property: opacity, transform; 
+	transition-duration: .8s; 
+	transition-timing-function: ease-in-out; 
+	opacity: 1; 
+	transform: translateX(0) translateY(0);
+}
+.appear_div.divs { 
+	transition-property: opacity, transform; 
+	transition-duration: .8s; 
+	transition-timing-function: ease-in-out; 
+	opacity: 1; 
+	transform: translateX(0) translateY(0);
+}

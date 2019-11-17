@@ -1,0 +1,197 @@
+@keyframes hamburger_1 {
+	0% { transform: translateY(0); }
+	50% { transform: translateY(10.5px); }
+	100% { transform: translateY(10.5px) rotateZ(45deg) scale(1.2); }
+}
+@keyframes hamburger_2 {
+	0% {}
+	50% { transform: rotateZ(0); }
+	100% { transform: rotateZ(45deg); }
+}
+@keyframes hamburger_3 {
+	0% { transform: translateY(0); }
+	50% { transform: translateY(-10.5px); }
+	100% { transform: translateY(-10.5px) rotateZ(-45deg) scale(1.2);	}
+}
+
+.header {
+	position: fixed;
+	left: 0;
+	top: 0;	
+	z-index: 2;
+}
+
+.header_list_con {
+	width: 100vw;
+	height: 100vh;
+	display: none;
+	flex-direction: column;
+	align-items: flex-start;
+	background-color: rgba(0, 0, 0);
+	opacity: 0;
+	overflow: hidden;
+	transition-property: opacity;
+	transition-duration: 1s;
+}
+.header.header_opened .header_list_con {
+	opacity: 1;
+}
+.header_list {
+	position: relative;
+	transform: translateX(-80%);
+	
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+	width: 100%;
+	height: 100%;
+	padding-top: 10%;
+	padding-left: 10%;
+	padding-bottom: 15%;
+	transition-property: transform;
+	transition-duration: 1s;
+	perspective: 500px;
+}
+.header.header_opened .header_list {
+	transform: translateX(0);
+}
+.header_list_page {
+	height: 11%;
+	letter-spacing: 3px;
+	font-size: 2rem;
+	font-family: "Raleway", sans-serif;
+	font-weight: bold;
+	color: white;
+	transition-property: transform;
+	transition-duration: 1s;
+	transition-timing-function: cubic-bezier(.41, .69, .75, 1.5);
+	transform-origin: left;
+	transform: rotateY(10deg) rotateZ(10deg);
+}
+.header_list_page:nth-child(1) { transition-delay: 0.1s; }
+.header_list_page:nth-child(2) { transition-delay: 0.25s; }
+.header_list_page:nth-child(3) { transition-delay: 0.4s; }
+
+.header.header_opened .header_list_page {
+	transform: rotateY(0) rotateZ(0);
+}
+
+.header_logo_wrapper {
+	position: absolute;
+	width: 160px;
+	height: 30px;
+	top: 8vw;
+	overflow: hidden;
+}
+
+.header_logo {
+	width: 100%;
+	height: 100%;
+	background-image: url("../image/logo-we12be.png");
+	background-size: contain;
+	background-repeat: no-repeat;
+	
+	transform: translateY(100%);
+	
+	transition-property: transform;
+	transition-duration: 1s;
+	transition-delay: 1s;
+}
+
+.header.header_opened .header_logo {
+	transform: translateY(0);
+}
+
+.header_bottom_wrapper {
+	position: absolute;
+	left: 0;
+	bottom: 25%;
+	padding-left: 10%;
+	width: 100%;
+	display: flex;
+	justify-content: flex-start;
+}
+
+.header_footer_wrapper {
+	overflow: hidden;
+}
+
+.header_footer {
+	font-family: "Raleway", sans-serif;
+	
+	transform: translateY(110%);
+	
+	transition-property: transform;
+	transition-duration: 1s;
+	transition-delay: 1.3s;
+}
+
+.header.header_opened .header_footer {
+	transform: translateY(0);
+}
+
+.header_lang_list {
+	display: flex;
+	align-items: flex-start;
+	padding-left: -3%;
+	margin-right: 17px;
+	overflow: hidden;
+}
+   
+.header_lang_child {
+	color: rgba(255, 255, 255, 0.6);
+	font-family: "Raleway", sans-serif;
+	padding: 0 10px 0 10px;
+	
+	transform: translateY(100%);
+	
+	transition-property: transform;
+	transition-duration: 1s;
+	transition-delay: 1.15s;
+}
+
+.header.header_opened .header_lang_child {
+	transform: translateY(0);
+}
+
+.header_lang_child.selected {
+	color: white;
+}
+.header_button_con {
+	position: fixed;
+	right: 25px;
+	top: 25px;
+	width: 30px;
+	height: 30px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.header.header_opened .header_button {
+	background-color: white;
+}
+
+
+.header_button {
+	width: 100%;
+	height: 2px;
+	border-radius: 4px;
+	background-color: #ffffff;
+	transition: background 1s;
+}
+
+.header_button_con[data-direction='open'].header_button_active .header_button:nth-child(1) { animation: hamburger_1 1s forwards; }
+.header_button_con[data-direction='open'].header_button_active .header_button:nth-child(2) { animation: hamburger_2 1s forwards; }
+.header_button_con[data-direction='open'].header_button_active .header_button:nth-child(3) { animation: hamburger_3 1s forwards; }
+.header_button_con[data-direction='close'].header_button_active .header_button:nth-child(1) { animation: hamburger_1 1s reverse forwards; }
+.header_button_con[data-direction='close'].header_button_active .header_button:nth-child(2) { animation: hamburger_2 1s reverse forwards; }
+.header_button_con[data-direction='close'].header_button_active .header_button:nth-child(3) { animation: hamburger_3 1s reverse forwards; }
+
+@media only screen and (min-width: 769px) {
+	html {
+		font-size: 22px;
+	}
+}

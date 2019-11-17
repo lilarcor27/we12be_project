@@ -1,0 +1,182 @@
+#board2 {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
+}
+
+#board21 {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+}
+
+#b21image1 {
+	width: 100vw;
+	height: 160vw;
+	display: flex;
+	justify-content: center;
+	margin-bottom: 12px;
+}
+
+#b21image1_image {
+	width: 100%;
+	height: 100%;
+	background-image: url("../image/image5.jpg");
+	background-position: center bottom;
+	background-size: cover;
+}
+
+#b21text1 {
+	position: absolute;
+	top: 15%;
+	font-size: 1.5rem;
+	font-family: "Raleway", sans-serif;
+	color: #ffffff;
+}
+
+#board22 {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+	
+	font-size: 1rem;
+	letter-spacing: 1px;
+	font-family: "Raleway", sans-serif;
+	line-height: 1.3rem;
+	color: rgba(0, 0, 0, 0.7);
+}
+
+#board22 .pita {
+	width: 230px;
+}
+
+#b22image1 {
+	width: 100vw;
+	height: 100vw;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	overflow: visible;
+	margin-bottom: 12px;
+}
+
+#b22image1_image {
+	background-image: url("../image/yeongjae/1.jpg");
+	background-position: 22% bottom;
+	background-size: cover;
+}
+
+#b22image2 {
+	width: 100vw;
+	height: 100vw;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	overflow: visible;
+	margin-bottom: 12px;
+}
+
+#b22text1 {
+	position: relative;
+	margin: 0 10vw 0 10vw;
+	color: #cccccc;
+}
+
+#b22text2 {
+	position: absolute;
+	left: 6.5%;
+	top: 58%;
+	color: dodgerblue;
+	font-size: 1.5rem;
+	font-family: "Raleway", sans-serif; 
+}
+
+#b22text3 {
+	position: relative;
+	margin: 0 10vw 0 10vw;
+	color: #cccccc;
+}
+
+#b22text4 {
+	position: absolute;
+	left: 13%;
+	top: 50%;
+	color: dodgerblue;
+	font-size: 1.5rem;
+	font-family: "Raleway", sans-serif;
+}
+
+#b22text5 {
+	position: relative;
+	margin: 0 10vw 0 10vw;
+	color: #cccccc;
+}
+
+#b22image2_image {
+	background-image: url("../image/junyeong/1.jpg");
+	background-position: 20% bottom;
+	background-size: cover;
+}
+
+#board22 .pita img {
+	width: 100%;
+}
+
+#board22 .pita {
+	position: absolute;
+	width: 25vw;
+}
+
+#board22 .picture_in_the_air {
+	height: 120vw;
+}
+
+#board22 .pita:nth-child(1) {
+	left: -12%;
+	top: 36%;
+	width: 75vw;
+	z-index: 2;
+}
+#board22 .pita:nth-child(2) {
+	left: 0%;
+	top: -21%;
+	width: 31vw;
+	z-index: 1;
+}
+#board22 .pita:nth-child(3) {
+	left: 29%;
+	top: 90%;
+	width: 78vw;
+}
+#board22 .pita:nth-child(4) {
+	left: 3%;
+	top: 73%;
+	width: 32vw;
+}
+#board22 .pita:nth-child(5) {
+	left: 35%;
+	top: -10%;
+	width: 74vw;
+	z-index: 4;
+}
+#board22 .pita:nth-child(6) {
+	left: 61%;
+	top: 19%;
+	width: 31vw;
+	z-index: 3;
+}
+
+@media only screen and (min-width: 769px) {
+	#b21image1 {
+		height: 133vw;
+	}
+}

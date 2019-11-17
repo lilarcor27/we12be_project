@@ -1,0 +1,445 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/reply.css">
+<style>
+
+html {
+/*	width: 100%;*/
+/*	height: 100%;*/
+}
+body {
+/*	width: 100%;*/
+/*	height: 100%;*/
+}
+
+.mainboard {
+	position: fixed;
+	left: 0;	top: 0;
+	width: 100vw;	height: 100vh;
+	
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.board_nextblock {
+	position: relative;
+	left: 0;	top: 0;
+	width: 100%;	height: 10%;
+	
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	
+	background: red;
+}
+
+.board_game {
+	position: relative;
+	left: 0;	top: 0;
+	width: 100%;	height: 70%;
+	
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	
+	background: blue;
+}
+
+.board_score {
+	position: relative;
+	left: 0;	top: 0;
+	width: 100%;	height: 20%;
+	
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	
+	background: green;
+}
+
+.board_row {
+	position: relative;
+	left: 0;	top: 0;
+	width: 10%;	height: 100%;
+	
+	display: flex;
+	flex-direction: column;
+	
+	background: limegreen;
+	
+	font-size: 0;
+}
+.board_block {
+	position: relative;
+	left: 0;	top: 0;
+	width: 100%;	height: 6.25%;
+		font-size: 0;
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="mainboard">
+	<div class="board_nextblock">
+		<div class="nextblock_wrapper"></div>
+	</div>
+	<div class="board_game">
+	</div>
+	<div class="board_score">
+		<div class="score_wrapper">
+			<div class="score_1">
+				SCORE
+			</div>
+			<div class="score_2">
+				0
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+const gameBoard = [];
+// Define Board Statement
+
+const WALL = -1;
+const EMPTY = 0;
+const MOVING_BLOCK = 1;
+const STACKED_BLOCK = 2;
+const SHADOW_BLOCK = 3;
+
+(function buildGameboard() {
+	const boardGameElem = document.querySelector(".board_game");
+	let subchild;
+	
+	for(let i = 0; i < 10; i++) {
+		subchild = document.createElement("div");
+		subchild.classList.add("board_row");
+		for(let j = 0; j < 16; j++) {
+			let subsubchild;
+			
+			subsubchild = document.createElement("div");
+			subsubchild.classList.add("board_block");
+			if(j == 15 || i == 0 || i == 9) {
+				subsubchild.innerText = WALL;
+				subsubchild.style.background = "black";
+			}
+			else 
+				subsubchild.innerText = EMPTY;
+			subchild.appendChild(subsubchild);
+		}
+		boardGameElem.appendChild(subchild);
+		subchild = null;
+	}
+})();
+
+(function addGameBoardElement() {
+	for(let i = 0; i < 10; i++) {
+		let foo = [];
+		for(let j = 0; j < 16; j++) {
+			foo.push(document.querySelector(".board_row:nth-child(" + (i + 1) + ") .board_block:nth-child(" + (16 - j) + ")"));
+		}
+		gameBoard.push(foo);
+	}
+})();
+
+const block_forms = [
+	[
+		[1, 2, 1],
+		[0, 0, 1]
+	],
+	[
+		[1, 2, 1],
+		[0, 1, 0]
+	],
+	[
+		[1, 0],
+		[2, 1],
+		[0, 1]
+	],
+	[
+		[1, 1],
+		[1, 1]
+	],
+	[
+		[1, 0],
+		[1, 0],
+		[1, 0],
+		[1, 0]
+	]
+];
+
+const block_colors = [
+	"red",
+	"blue",
+	"dodgerblue"
+];
+
+function Blocks() {
+	this.blockForm = block_forms[Math.floor(Math.random()*block_forms.length)];
+	this.blockColor = block_colors[Math.floor(Math.random()*block_colors.length)];
+	this.LTPos = [0, 0];
+}
+let timecount = 0;
+let currentBlock = null;
+let score = 0;
+let gstop = 0;
+
+(function startGame() {
+	gameLoop();
+})();
+
+function makeBoardBlock(elem) {
+	elem.innerText = MOVING_BLOCK;
+	elem.style.background = currentBlock.blockColor;
+}
+function makeBoardStackedBlock(elem) {
+	elem.innerText = STACKED_BLOCK;
+	elem.style.background = "#222";
+}
+function makeBoardShadowBlock(elem) {
+	elem.innerText = SHADOW_BLOCK;
+	elem.style.background = "#777";
+}
+function disableBoardBlock(elem) {
+	elem.innerText = EMPTY;
+	elem.style.background = "initial";
+}
+function checkBoardState(elem) {
+	return elem.innerText;
+}
+
+function gameLoop() {
+	if(++timecount % 60 == 0) {
+		if(currentBlock != null) {
+			if(!makeBlockDown(currentBlock)) {
+				makeBlockStacked();
+			}	
+		}
+	}
+	if(!currentBlock)
+		createBlock();
+		
+		
+	if(timecount % 2 == 0) {
+		updateBlock();
+		updateBoard();
+		updateScore();
+	}
+	if(gstop) return;
+	
+	requestAnimationFrame(gameLoop);
+}
+
+function makeBlockDown(elem) {
+	if(elem == null) return;
+	
+	let virtualBlock = new Blocks();
+	virtualBlock.blockForm = elem.blockForm;
+	virtualBlock.LTPos = [elem.LTPos[0], elem.LTPos[1] - 1];
+	
+	if(checkBlock(virtualBlock)) {
+		elem.LTPos = virtualBlock.LTPos;
+		return 1;
+	} else { 
+		return 0;
+	}
+}
+
+function makeBlockLR(dir) {
+	if(currentBlock == null) return;
+	// Left : 1
+	// Right: 2
+	let virtualBlock = new Blocks();
+	virtualBlock.blockForm = currentBlock.blockForm;
+	virtualBlock.LTPos = [currentBlock.LTPos[0] + ((dir * 2) - 3), currentBlock.LTPos[1]];
+	if(checkBlock(virtualBlock)) {
+		currentBlock.LTPos = virtualBlock.LTPos;
+		return 1;
+	} else { 
+		return 0;
+	}
+}
+
+function updateBlock() {
+	if(currentBlock == null) return;
+	for(let i = 0; i < gameBoard.length; i++) {
+		for(let j = 0; j < gameBoard[0].length; j++) {
+			if(checkBoardState(gameBoard[i][j]) == MOVING_BLOCK)
+				disableBoardBlock(gameBoard[i][j]);
+				
+			if(checkBoardState(gameBoard[i][j]) == SHADOW_BLOCK)
+				disableBoardBlock(gameBoard[i][j]);
+		}
+	}
+	
+	let virtualBlock = new Blocks();
+	
+	virtualBlock.blockForm = currentBlock.blockForm;
+	virtualBlock.LTPos = currentBlock.LTPos;
+	virtualBlock.blockColor = "gray";
+		
+	while(makeBlockDown(virtualBlock)) {}
+
+	for(let i = virtualBlock.blockForm.length-1; i >= 0; i--) {
+		for(let j = 0; j < virtualBlock.blockForm[0].length; j++) {
+			if(virtualBlock.blockForm[i][j] == 0) continue;
+			if(checkBoardState(gameBoard[virtualBlock.LTPos[0] + j][virtualBlock.LTPos[1] - i]) != EMPTY) continue;
+			
+			makeBoardShadowBlock(gameBoard[virtualBlock.LTPos[0] + j][virtualBlock.LTPos[1] - i]);
+
+		}
+	}
+
+	for(let i = currentBlock.blockForm.length-1; i >= 0; i--) {
+		for(let j = 0; j < currentBlock.blockForm[0].length; j++) {
+			if(currentBlock.blockForm[i][j] == 0) continue;
+			console.log(checkBoardState(gameBoard[currentBlock.LTPos[0] + j][currentBlock.LTPos[1] - i]));
+			if(checkBoardState(gameBoard[currentBlock.LTPos[0] + j][currentBlock.LTPos[1] - i]) == STACKED_BLOCK)
+				gameover();
+			else 
+				makeBoardBlock(gameBoard[currentBlock.LTPos[0] + j][currentBlock.LTPos[1] - i]);
+		}
+	}
+}
+
+function gameover() {
+	alert("game over");
+	gstop = 1;
+}
+function updateScore() {
+	document.querySelector(".score_2").innerText = score;
+}
+
+function updateBoard() {
+	let isStackedLine = 0;
+	let isEmptyLine = 0;
+	for(let i = 0; i < gameBoard[0].length-1; i++) {
+		for(let j = 0; j < gameBoard.length; j++) {
+			if(checkBoardState(gameBoard[j][i]) == WALL) continue;
+		
+			if(checkBoardState(gameBoard[j][i]) == STACKED_BLOCK) 
+				isStackedLine++
+			else if(checkBoardState(gameBoard[j][i]) == EMPTY
+					|| checkBoardState(gameBoard[j][i]) == MOVING_BLOCK
+					|| checkBoardState(gameBoard[j][i]) == SHADOW_BLOCK) 
+				isEmptyLine++;
+						
+		}
+		if(isStackedLine == gameBoard.length - 2) {
+			for(let j = 0; j < gameBoard.length; j++) {
+				if(checkBoardState(gameBoard[j][i]) == WALL) continue;
+				disableBoardBlock(gameBoard[j][i]);
+			}
+			addScore(10);
+		} else if(isEmptyLine == gameBoard.length - 2) {
+			for(let j = 0; j < gameBoard.length; j++) {
+				if(checkBoardState(gameBoard[j][i+1]) == WALL) continue;
+				
+				if(checkBoardState(gameBoard[j][i+1]) == STACKED_BLOCK) {
+					disableBoardBlock(gameBoard[j][i+1]);
+					makeBoardStackedBlock(gameBoard[j][i]);
+				}
+			}
+		}
+		isStackedLine = isEmptyLine = 0;
+		
+	}
+	
+	
+}
+
+function addScore(val) {
+	score += val;
+}
+
+function makeBlockStacked() {
+	for(let i = currentBlock.blockForm.length-1; i >= 0 ; i--) {
+		for(let j = 0; j < currentBlock.blockForm[0].length; j++) {
+			if(currentBlock.blockForm[i][j] == EMPTY) continue;
+			makeBoardStackedBlock(gameBoard[currentBlock.LTPos[0] + j][currentBlock.LTPos[1] - i]);
+		}
+	}
+	
+	currentBlock = null;
+}
+
+function checkBlock(elem) { 
+	for(let i = elem.blockForm.length-1; i >= 0 ; i--) {
+		for(let j = 0; j < elem.blockForm[0].length; j++) {
+			if(elem.blockForm[i][j] == 0) continue; // 공백스킵
+
+			if(checkBoardState(gameBoard[elem.LTPos[0] + j][elem.LTPos[1] - i]) == STACKED_BLOCK
+			|| checkBoardState(gameBoard[elem.LTPos[0] + j][elem.LTPos[1] - i]) == WALL) {
+				// 해당 위치 블록이 벽이거나 stacked일 때
+				return 0;
+			}
+		}
+	}
+	return 1;
+}
+
+function turnBlock() {
+	if(currentBlock == null) return;
+	/*
+	1. 가상 객체 생성
+	2. 가상 객체 블록폼 돌린다
+	3. checkblock 이상없으면 터닝 / 가상객체 대입이 편할듯
+	*/
+	
+	// Step 1
+	let virtualBlock_form = currentBlock.blockForm;
+	virtualBlock_form = [];
+		
+	// Step 2
+	for(let i = 0; i < currentBlock.blockForm[0].length; i++) {
+		let foo = [];
+
+		for(let j = currentBlock.blockForm.length-1; j >= 0 ; j--) {
+			foo.push(currentBlock.blockForm[j][i]);
+		}
+		virtualBlock_form.push(foo);
+	}
+	
+	// Step 3
+	let virtualBlock = new Blocks();
+	virtualBlock.blockForm = virtualBlock_form;
+	virtualBlock.LTPos = currentBlock.LTPos;
+	if(checkBlock(virtualBlock)) {
+		currentBlock.blockForm = virtualBlock_form;
+		return 1;
+	} else {
+		return 0;
+	}
+	
+}
+
+window.addEventListener('keydown', function (e) {
+	if(e.keyCode == 37) { // 왼쪽
+		makeBlockLR(1);
+	} else if(e.keyCode == 39) { // 오른쪽 
+		makeBlockLR(2);
+	} else if(e.keyCode == 38) { // 위쪽  
+		turnBlock();
+	} else if(e.keyCode == 40) { // 아
+		while(makeBlockDown(currentBlock)) {}
+		makeBlockStacked();
+	} else if(e.keyCode == 32) { // 아
+		makeBlockDown(currentBlock)
+	} 
+});
+
+function createBlock() {
+	currentBlock = null;
+	currentBlock = new Blocks();
+	
+	currentBlock.LTPos = [4, 15];
+	updateBlock();
+}
+
+</script>
+</body>
+</html>

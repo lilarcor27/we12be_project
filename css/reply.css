@@ -1,0 +1,186 @@
+.form_error {
+	color: red;
+}
+
+.reply_container {
+	position: relative;
+	left: 0; top: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.reply_wrapper {
+	position: relative;
+	left: 0; top: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	/* padding: 4px 30px 4px 4px; */
+	width: 100%;
+	border-bottom: 1px solid #ccc;
+}
+.reply_nickname {
+	position: relative;
+	left: 0; top: 0;
+	width: 100%;
+	height: 100%;
+	padding: 2px;
+	font-weight: bold;
+}
+.reply_content {
+	position: relative;
+	left: 0; top: 0;
+	width: 100%;
+	height: 100%;
+	padding: 2px;
+	margin-right: 30px;
+}
+.reply_content h1 {
+	margin-right: 25px;
+}
+.reply_date {
+	position: relative;
+	left: 0; top: 0;
+	width: 100%;
+	height: 100%;
+	padding: 2px;
+	font-size: 0.7rem;
+	opacity: 0.7;
+}
+.reply_delete {
+	position: absolute;
+	left: 97%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	
+	width: 10px;
+	height: 10px;
+	
+	font-size: 0.5rem;
+	font-family: "Raleway", sans-serif;
+}
+
+.form_wrapper {
+	position: relative;
+	left: 0; top: 3vw;
+	width: 100%;
+	
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	
+	background-color: white;
+	border: 1px solid #999;
+	
+	margin-bottom: 10vw;
+}
+
+.form_wrapper index, .form_wrapper textarea {
+	font-family: sans-serif;
+	color: black;
+}
+
+.form_nickpass {
+	position: relative;
+	left: 0; top: 0;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	width: 100%;
+	
+	border-bottom: 1px solid #ccc;
+}
+
+.form_nickpass input {
+	height: 20px;
+	width: 50%;
+	border: 0;
+	margin: 0;
+	padding: 3px;
+}
+.form_nickpass input:nth-child(1) {
+	border-right: 1px solid #ccc;
+}
+
+.form_textbox {
+	position: relative;
+	left: 0; top: 0;
+	width: 100%;
+}
+
+.form_textbox textarea {
+	width: 98%;
+	border: 0;
+	margin: 0;
+	padding: 3px;
+}
+
+.form_submit {
+	position: relative;
+	left: 0; top: 0;
+	width: 100%;
+	
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	
+	border-top: 1px solid #ccc;
+}
+
+.form_submit input {
+	background-color: #ccc;
+	margin: 3px;
+	border: 1px solid black;
+}
+
+.form_delete_container {
+	position: absolute;
+	left: 0; top: 0;
+	width: 100%; height: 100%;
+	display: none;
+	justify-content: center;
+	align-items: center;
+	background-color: rgba(0, 0, 0, 0.3);
+	z-index: 400;
+}
+.form_delete_container.appear {
+	display: flex;
+}
+.form_delete_wrapper {
+	position: relative;
+	
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	
+	background-color: rgba(255, 255, 255, 0.9);
+	padding: 20px;
+	
+	border-radius: 7px;
+}
+.form_delete_pwinput {
+	padding: 10px 3px 3px 3px;
+}
+.form_delete_submit {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	padding-top: 3px;
+}
+.form_delete_submit input {
+	background-color: #ccc;
+	margin: 3px;
+	border: 1px solid black;
+	width: 50%;
+}
+
+.form_delete_cancel {
+	position: absolute;
+	left: 93%; top: 10%;
+	transform: translate(-50%, -50%);
+	font-family: "Raleway", sans-serif;
+}

@@ -1,0 +1,39 @@
+#p1 {
+	position: relative;
+	left: 0;		top: 0;
+	display: flex;
+	background-color: dodgerblue;
+	flex-direction: column;
+	align-items: center;
+	background: url("../image/tetsuya/1.jpg");
+	background-size: cover;
+	background-position: center bottom;
+}
+.p1_border {
+	position: absolute;
+	left: 50%;	top: 50%;
+	width: 80vw;	height: 70vh;
+	transform: translate(-50%, -50%);
+	border-radius: 25px;
+	padding: 20px;
+	background: rgba(0, 0, 0, 0.1);
+}
+.p1_title {
+	text-align: center;
+	font-size: 2rem;
+	font-family: "Raleway", sans-serif;
+	font-weight: bold;
+	color: white;
+}
+.p1_subtitle {
+	font-size: 1.5rem;
+	font-family: "Raleway", sans-serif;
+	color: white;
+}
+
+.pimage {
+	position: relative;
+	left: 0; top: 0;
+	width: 100%;
+	background-size: contain;
+}

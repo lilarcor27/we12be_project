@@ -1,0 +1,74 @@
+#board3 {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
+}
+
+#board31 {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+}
+
+#b31image1 {
+	width: 100vw;
+	height: 160vw;
+	display: flex;
+	justify-content: center;
+}
+
+#b31image1_image {
+	width: 100%;
+	height: 100%;
+	background-image: url("../image/image5.jpg");
+	background-position: center bottom;
+	background-size: cover;
+}
+
+#b31text1 {
+	position: absolute;
+	top: 15%;
+	font-size: 1.5rem;
+	font-family: "Raleway", sans-serif;
+	color: #ffffff;
+}
+
+#board32 {
+	position: relative;
+	width: 100vw;
+	left: 0;
+	top: 0;
+	perspective: 300px;
+}
+
+.contacts_con {
+	position: relative;
+	left: 0; top: 0;
+	width: 100vw;
+	height: 120vw;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: space-around;
+	font-family: "Raleway", sans-serif;
+}
+
+.contacts_con h2 {
+	font-size: 2.5rem;
+	padding-left: 1rem;		
+}
+.contacts_con h1 {
+	font-size: 1.5rem;
+	padding-left: 4rem;
+}
+
+@media only screen and (min-width: 769px) {
+	#b31image1 {
+		height: 133vw;
+	}
+}
