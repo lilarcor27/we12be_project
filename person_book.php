@@ -41,20 +41,18 @@ body {
 	</div>
 	<div class="form_delete_container">
 		<div class="form_delete_wrapper">
-			<form method="post" action="php/reply_delete.php">
-				<input type="hidden" id="pname_delete" name="pname" value="something">
-				<input type="hidden" id="form_replyid" name="reply_id" value="0">
-				<input type="hidden" id="content_id" name="content_id" value="something">
-				<div class="form_delete_pwinput">
-					<input type="text" name="pw_check" required placeholder="write your password.">
-				</div>
-				<div class="form_delete_submit">
-					<input type="submit">
-				</div>
-				<div class="form_delete_cancel">
-					X
-				</div>
-			</form>
+			<!-- <input type="hidden" id="pname_delete" name="pname" value="something">
+			<input type="hidden" id="form_replyid" name="reply_id" value="0">
+			<input type="hidden" id="content_id" name="content_id" value="something"> -->
+			<div class="form_delete_pwinput">
+				<input type="text" id="reply_delete_pwcheck">
+			</div>
+			<div class="form_delete_submit">
+				<button id="reply_delete_button">Submit</button>
+			</div>
+			<div class="form_delete_cancel">
+				X
+			</div>
 		</div>
 	</div>
 	<div class="form_update_container">
@@ -126,6 +124,7 @@ body {
 <script src="js/page.js"></script>
 <script src="js/check_language.js"></script>
 <script src="js/write_reply_ajaxquery.js"></script>
+<script src="js/delete_reply_ajaxquery.js"></script>
 
 </script>
 <?php include "php/check_lang.php"; ?>

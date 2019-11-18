@@ -16,6 +16,7 @@ $nickname = stringSanitaze($nickname, $conn);
 $password = stringSanitaze($password, $conn);
 $content = stringSanitaze($content, $conn);
 $pname = stringSanitaze($pname, $conn);
+$replynum = null;
 
 if($nickname && $password && $content) {
 	$sqlquery =
@@ -28,10 +29,19 @@ if($nickname && $password && $content) {
 		mysqli_close($conn);
 		die($sqlquery);
 	}
+
+	$sqlquery = "SELECT * FROM lilarcor27.reply WHERE nickname='$nickname' AND date=$time";
+	$result_set = mysqli_query($conn, $sqlquery);
+	$row = mysqli_fetch_array($result_set);
+	if($row) {
+		$replynum = $row["id"];
+	} else {
+		die("there's no reply.");
+	}
 }
 
 mysqli_close($conn);
 
-$result_set = ["result" => "100", "date" => $time];
-echo json_encode($result_set);
+$write_result_set = ["result" => "100", "date" => $time, "replynum" => $replynum];
+echo json_encode($write_result_set);
 ?>

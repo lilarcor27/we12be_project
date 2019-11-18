@@ -6,7 +6,6 @@ const progressTextElem = document.querySelectorAll(".progress_text");
 const progressBarElem = document.querySelector(".progress_bar");
 const progressBarTextElem = document.querySelector(".progress_bar_text");
 const pageIndexElem = document.querySelector(".page_index");
-const replyDeleteElem = document.querySelectorAll(".reply_delete");
 const naviElem = document.querySelector(".navi_wrapper");
 const helperElem = document.querySelector(".helper");
 const loadingElem = document.querySelector(".loading");
@@ -31,9 +30,9 @@ function setzIndexforPages() {
 
 function setInputValue() {
 	// document.querySelector("#pname_reply").setAttribute("value", boardElem.getAttribute("id"));  // person 이름 넣기
-	document.querySelector("#pname_delete").setAttribute("value", boardElem.getAttribute("id")); // person 이름 넣기
+	// document.querySelector("#pname_delete").setAttribute("value", boardElem.getAttribute("id")); // person 이름 넣기
 	document.querySelector("#pname_update").setAttribute("value", boardElem.getAttribute("id")); // person 이름 넣기
-	document.querySelector("#content_id").setAttribute("value", boardElem.getAttribute("data-contentnum"));
+	// document.querySelector("#content_id").setAttribute("value", boardElem.getAttribute("data-contentnum"));
 }
 
 function setPageIndexGray() {
@@ -182,11 +181,12 @@ requestAnimationFrame(progressBarTimer);
 function pageClickHandler(evt) {
 	const target = evt.target;
 	if(target.classList.contains("reply_delete")) {
+		const replyDeleteElem = document.querySelectorAll(".reply_delete");
 		for(let i = 0; i < replyDeleteElem.length; i++) {
 			if(target != replyDeleteElem[i])
 				continue;
 
-			document.querySelector("#form_replyid").setAttribute("value", replyDeleteElem[i].parentNode.getAttribute("data-replynum"));
+			document.querySelector(".form_delete_container").dataset.replynum = replyDeleteElem[i].parentNode.getAttribute("data-replynum");
 
 			formDeleteContainerElem.classList.add("appear");
 		}
