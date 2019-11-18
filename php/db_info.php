@@ -6,13 +6,13 @@
 		$SQL_servername = "0.0.0.0";
 	else // 외부망에서 접속(도메인으로) 할 경우
 		$SQL_servername = "localhost";
-	
+
 	$SQL_username = "lilarcor27";
-	$SQL_password = "WE12be!@";	
-	
+	$SQL_password = "WE12be!@";
+
 	if($SQL_servername == "0.0.0.0") {
 		$SQL_username = "root";
-		$SQL_password = "";	
+		$SQL_password = "";
 	}
 
 	$conn = mysqli_connect($SQL_servername, $SQL_username, $SQL_password);
@@ -20,5 +20,5 @@
 		mysqli_close($conn);
 		die("something wrong - connection");
 	}
-	
+
 ?>

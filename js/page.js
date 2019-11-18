@@ -1,5 +1,5 @@
 (function() {
-	
+
 const boardElem = document.querySelector(".board");
 const formDeleteContainerElem = document.querySelector(".form_delete_container");
 const progressTextElem = document.querySelectorAll(".progress_text");
@@ -30,7 +30,7 @@ function setzIndexforPages() {
 }
 
 function setInputValue() {
-	document.querySelector("#pname_reply").setAttribute("value", boardElem.getAttribute("id"));  // person 이름 넣기
+	// document.querySelector("#pname_reply").setAttribute("value", boardElem.getAttribute("id"));  // person 이름 넣기
 	document.querySelector("#pname_delete").setAttribute("value", boardElem.getAttribute("id")); // person 이름 넣기
 	document.querySelector("#pname_update").setAttribute("value", boardElem.getAttribute("id")); // person 이름 넣기
 	document.querySelector("#content_id").setAttribute("value", boardElem.getAttribute("data-contentnum"));
@@ -40,8 +40,16 @@ function setPageIndexGray() {
 	for(let i = 0; i < 5; i++) {
 		const pTextElem = document.querySelector(".progress_text:nth-child(" + (i + 1) + ")");
 		if(pTextElem.dataset.indexnum != 99) continue;
-		
+
 		pTextElem.style.color = "#909090";
+	}
+}
+
+function setReplyTimeToDate() {
+	const replyDateElem = document.querySelectorAll(".reply_date");
+
+	for(let i = 0; i < replyDateElem.length; i++) {
+		replyDateElem[i].innerText = new Date(1000*parseInt(replyDateElem[i].innerText));
 	}
 }
 
@@ -50,13 +58,14 @@ function init() {
 	setzIndexforPages();
 	setInputValue();
 	setPageIndexGray();
+	setReplyTimeToDate();
 	gotoPage(1);
 }
 
 
 function gotoPage(pageNum) {
 	if(!(1 <= pageNum && pageNum <= Pages.elem.length)) return;
-	
+
 	turnPage(pageNum);
 	checkPage(pageNum);
 }
@@ -89,23 +98,23 @@ let selectedText = 1;
 
 function checkPage(pageNum) {
 	let foo = 0;
-	
+
 	document.querySelector(".progress_text:nth-child(" + selectedText + ")").classList.remove("selected");
-	
+
 	for(let i = 0; i < progressTextElem.length; i++) {
 		if(pageNum >= progressTextElem[i].dataset.indexnum)
 			foo = i;
 	}
 	selectedText = foo + 1;
 	document.querySelector(".progress_text:nth-child(" + selectedText + ")").classList.add("selected");
-	
+
 	let pagePer = (selectedText - 1) * 25;
 /*
 	if(pageNum <= document.querySelector(progress_text:nth-child(2)).dataset.indexnum)
 		pagePer = 0;
 	else if(pageNum >= document.querySelector(progress_text:nth-child(5)).dataset.indexnum)
 		pagePer = 100;
-	else 
+	else
 		pagePer = ((pageNum - 2) * 100) / (Pages.elem.length - 3);
 */
 	progressBarElem.style.width = pagePer + "%";
@@ -122,13 +131,13 @@ function touchStartHandler(e) {
 
 function touchMoveHandler(e) {
 	if(!(xFirst * yFirst)) return;
-	
+
 	let xLast = e.touches[0].clientX;
 	let yLast = e.touches[0].clientY;
-	
+
 	let xDiff = xLast - xFirst;
 	let yDiff = yLast - yFirst;
-	
+
 	if(Math.abs(xDiff) > Math.abs(yDiff)) { // 가로축 방향
 		if(xDiff > 0) { // 우측
 			gotoPrevPage();
@@ -144,7 +153,7 @@ function touchMoveHandler(e) {
 			foldPage(false);
 		}
 	}
-	
+
 	xFirst = yFirst = null;
 }
 
@@ -174,11 +183,11 @@ function pageClickHandler(evt) {
 	const target = evt.target;
 	if(target.classList.contains("reply_delete")) {
 		for(let i = 0; i < replyDeleteElem.length; i++) {
-			if(target != replyDeleteElem[i]) 
+			if(target != replyDeleteElem[i])
 				continue;
-			
+
 			document.querySelector("#form_replyid").setAttribute("value", replyDeleteElem[i].parentNode.getAttribute("data-replynum"));
-			
+
 			formDeleteContainerElem.classList.add("appear");
 		}
 	} else if(target.classList.contains("form_delete_cancel")) {
@@ -224,7 +233,7 @@ function disableLoading() {
 
 function naviWrapperHandler(e) {
 	const target = e.target;
-	
+
 	if(target.classList.contains("navi_button")) {
 		if(target.classList.contains("navi_forward")) {
 			gotoNextPage();

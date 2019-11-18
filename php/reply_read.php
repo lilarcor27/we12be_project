@@ -28,7 +28,7 @@ if(!$row) {
 		echo "</div>";
 	} while($row = mysqli_fetch_array($result_set));
 }
-
-mysqli_close($conn);
 echo "</div>";
+mysqli_close($conn);
+
 ?>

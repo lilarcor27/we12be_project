@@ -1,4 +1,12 @@
-<!doctype html>
+<!-- 1. 댓글 작성할 수 있도록 textbox 하나 만들기
+2. js에서 innerText로 접근하여 php로 쿼리 보내기
+3. 반영하여 실시간 업데이트 해주기 -->
+
+
+
+
+
+<!-- <!doctype html>
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,4 +41,4 @@ asdfElem.addEventListener("click", function() {
 </script>
 
 </body>
-</html>
+</html> -->

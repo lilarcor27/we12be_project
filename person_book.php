@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<?php	
-	include "php/string_sanitaze.php"; 
+<?php
+	include "php/string_sanitaze.php";
 	include "php/check_page_info.php";
 //	$pname is just set from above php file.
 ?>
@@ -75,7 +75,7 @@ body {
 		</div>
 	</div>
 	<div class="logo_wrapper">
-		<img src="../image/logo-we12be.png" id="logo" height="17px"></img>
+		<img src="image/logo-we12be.png" id="logo" height="17px"></img>
 	</div>
 	<div class="progress_wrapper fold">
 		<div class="progress_index">
@@ -97,11 +97,22 @@ body {
 	</div>
 	<div class="page_wrapper">
 		<?php include "php/page_content_read.php"; ?>
-		
+
 		<div class="page">
 			<div class="content_wrapper">
 				<?php include "php/reply_read.php"; ?>
-				<?php include "php/reply_input.php"; ?>
+				<div class="form_wrapper">
+					<div class="form_nickpass">
+						<input type="text" id="reply_nickname" required placeholder="이름" maxlength="10"><div class="form_error"></div>
+						<input type="text" id="reply_password" required placeholder="비번" maxlength="10"><div class="form_error"></div>
+					</div>
+					<div class="form_textbox">
+						<textarea rows="4" id="reply_content" required placeholder="내용"></textarea><div class="form_error">
+					</div>
+					<div class="form_submit">
+						<button id="reply_submit">Submit</button>
+					</div>
+				</div>
 			</div>
 		</div>
 	<div class="page_index">0</div>
@@ -114,6 +125,9 @@ body {
 <?php include "php/reply_result.php"; ?>
 <script src="js/page.js"></script>
 <script src="js/check_language.js"></script>
+<script src="js/write_reply_ajaxquery.js"></script>
+
+</script>
 <?php include "php/check_lang.php"; ?>
 </body>
 </html>
