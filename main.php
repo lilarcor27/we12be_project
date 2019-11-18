@@ -92,12 +92,13 @@ div {
 					<div class="aimage" id="b11image1_image"></div>
 				</div>
 				<div class="curtain" id="b11image1_curtain"></div>
-				<div class="texts texts_up" id="b11text1">
+				<div class="texts" id="b11text1">
 					what's your dream?
 				</div>
 				<div class="gradient"></div>
 			</div>
-			<div class="texts texts_right" id="b11text2">
+			<div class="texts" id="b11text2">
+				<div class="gradient_text"></div>
 				<p class="lang lang_en">
 					Who are you?<br>
 					What goals do you have?<br>
@@ -126,52 +127,52 @@ div {
 				<div class="person_name" id="tetsuya_name">Tetsuya Joie</div>
 			</div>
 		</div>
-				
-		<!-- <div id="load_more">asdf</div> -->
 	</div>
 	<div class="board" id="board2">
 		<div class="subboard" id="board21">
-			<div class="images images_left" id="b21image1">	
+			<div class="images images_left" id="b21image1">
 				<div class="image_overflow_wrapper bottom">
 					<div class="aimage" id="b21image1_image"></div>
 				</div>
 				<div class="curtain" id="b21image1_curtain"></div>
-				<div class="texts texts_up" id="b21text1">
+				<div class="texts" id="b21text1">
 					about
 				</div>
 				<div class="gradient"></div>
 			</div>
 		</div>
 		<div class="subboard" id="board22">
-			<div class="texts texts_right" id="b22text1">
-					<p class="lang lang_en">
-						One 'I want to be'<br>
-						Makes 'We want to be'!<br>
-						<br>
-						The we12be is a project of sharing; recording your goals, experiences and what you want to be.<br>
-						Its aim is to help us focus and define ourselves more clearly.<br>
-						Each other’s examples may become each other’s inspiration. Who knows where that might lead?
-						
-					</p>
-					<p class="lang lang_kr">
-						하나의 'I want to be'가 모인<br>
-						'We want to be'!<br>
-						<br>
-						we12be 프로젝트란 개인이 되고자 하는 모습, 목표, 혹은 경험들의 과정을 기록하고 공유하는 프로젝트입니다. 개인의 목표 달성을 도와주며 더 나아가 우리는 '나'라는 사람이 어떤 사람인지 생각해볼 시간을 가지고 서로의 가치관을 공유하며 다양한 방식의 삶을 간접적으로 경험하게 됩니다. 이런 과정을 통해 개개인의 다른 부분들을 수용하고 긍정적 변화를 만드는 것이 우리 프로젝트의 목표입니다.
-					</p>
+			<div class="texts" id="b22text1">
+				<div class="gradient_text"></div>
+				<p class="lang lang_en">
+					One 'I want to be'<br>
+					Makes 'We want to be'!<br>
+					<br>
+					The we12be is a project of sharing; recording your goals, experiences and what you want to be.<br>
+					Its aim is to help us focus and define ourselves more clearly.<br>
+					Each other’s examples may become each other’s inspiration. Who knows where that might lead?
+
+				</p>
+				<p class="lang lang_kr">
+					하나의 'I want to be'가 모인<br>
+					'We want to be'!<br>
+					<br>
+					we12be 프로젝트란 개인이 되고자 하는 모습, 목표, 혹은 경험들의 과정을 기록하고 공유하는 프로젝트입니다. 개인의 목표 달성을 도와주며 더 나아가 우리는 '나'라는 사람이 어떤 사람인지 생각해볼 시간을 가지고 서로의 가치관을 공유하며 다양한 방식의 삶을 간접적으로 경험하게 됩니다. 이런 과정을 통해 개개인의 다른 부분들을 수용하고 긍정적 변화를 만드는 것이 우리 프로젝트의 목표입니다.
+				</p>
 			</div>
-		
+
 			<div class="profile divs" id="profile1">
 				<div class="profile_image images images_left" id="b22image1">
 					<div class="image_overflow_wrapper bottom">
 						<div class="aimage" id="b22image1_image"></div>
 					</div>
 					<div class="curtain"></div>
-					<div class="texts texts_right" id="b22text2">
+					<div class="texts" id="b22text2">
 						Yeongjae SEO
 					</div>
 				</div>
-				<div class="texts texts_left" id="b22text3">
+				<div class="texts" id="b22text3">
+					<div class="gradient_text"></div>
 					<p class="lang lang_en">
 						When I look back on my 20s, I see that I was lucky to have had many chances to meet many different people. My experiences of how they defined the values of love, money, fame, health, service, etc. helped me realize that there are diverse  options for my own path in life, not just one way.<br>
 						Just as not only social success but also a good father or a healthy body could be first criterion of happiness, I think true happiness starts with exploring yourself first.<br>
@@ -205,18 +206,19 @@ div {
 					<img src="image/junyeong/4.jpg"></img>
 				</div>
 			</div>
-			
+
 			<div class="profile divs" id="profile2">
 				<div class="profile_image images images_left" id="b22image2">
 					<div class="image_overflow_wrapper bottom">
 						<div class="aimage" id="b22image2_image"></div>
 					</div>
 					<div class="curtain"></div>
-					<div class="texts texts_left" id="b22text4">
+					<div class="texts" id="b22text4">
 						Junyeong KO
 					</div>
 				</div>
-				<div class="texts texts_right" id="b22text5">
+				<div class="texts" id="b22text5">
+					<div class="gradient_text"></div>
 					<p class="lang lang_en">
 						Since I was young, I have always been interested in making things with computers. So the interest that started when I was in elementary school has continued until now, and I am in charge of the engineers for the we12be project.<br>
 						I am always a person who has a small and large goal in my heart, so it is extremely rare that my life has lacked a sense of purpose. I get the energy of life from my goals, especially when I focus on computer and financial goals.<br>
@@ -231,7 +233,7 @@ div {
 					</p>
 				</div>
 			</div>
-		</div>		
+		</div>
 	</div>
 	<div class="board" id="board3">
 		<div class="subboard" id="board31">
@@ -240,7 +242,7 @@ div {
 					<div class="aimage" id="b31image1_image"></div>
 				</div>
 				<div class="curtain" id="b31image1_curtain"></div>
-				<div class="texts texts_up" id="b31text1">
+				<div class="texts" id="b31text1">
 					Contacts
 				</div>
 				<div class="gradient"></div>

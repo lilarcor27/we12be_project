@@ -71,6 +71,9 @@ function makeReplyWrapper(nickname, content, date, replynum) {
   div_wrapper.appendChild(div_delete);
 
   div_container.prepend(div_wrapper);
+
+  div_wrapper.offsetWidth = div_wrapper.offsetWidth;
+  div_wrapper.style.opacity = "1";
 }
 
 })();

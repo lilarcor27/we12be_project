@@ -1,11 +1,11 @@
 (function () {
-	
-	
+
+
 const mainboardElem = document.querySelector("#mainboard");
 const logoElem = document.querySelector("#logo");
 
-const appeardivsinboard1 = document.querySelectorAll("#board1 .divs");	
-const appeardivsinboard2 = document.querySelectorAll("#board2 .divs");	
+const appeardivsinboard1 = document.querySelectorAll("#board1 .divs");
+const appeardivsinboard2 = document.querySelectorAll("#board2 .divs");
 const Images = [
 	document.querySelectorAll("#board1 .images"),
 	document.querySelectorAll("#board2 .images"),
@@ -28,7 +28,7 @@ const Boards = document.querySelectorAll(".board");
 
 // Board
 
-function Board() {	
+function Board() {
 	this.boardElem = document.querySelectorAll(".board");
 	this.board11image1Elem = document.querySelector(".board11 .image1");
 	this.targetBoardNum = -1;
@@ -51,7 +51,7 @@ function boardAppear(elem) {
 	elem.classList.add("board_appear");
 
 	setTimeout(boardAppearingAnimation, 1000, boardData.targetBoardNum, true);
-}	
+}
 function boardDisappear(elem) {
 	if(elem === -1) return;
 	if(elem.classList.contains("board_appear"))
@@ -86,7 +86,7 @@ function boardAppearingAnimation(elemNum, isAppear) {
 			setTimeout(function() {
 				appearDiv(Texts[3][0]);
 			}, 1000);
-		}	
+		}
 	} else {
 		for(let i = 0; i < Math.max(Images[prevBoardNum - 1].length, Texts[prevBoardNum - 1].length); i++) {
 			disappearImage(Images[prevBoardNum - 1][i]);
@@ -125,7 +125,7 @@ function logoAppear() {
 	logoElem.offsetWidth = logoElem.offsetWidth;
 	logoElem.classList.add("logo_appear");
 }
-function logoDisappear() {                             
+function logoDisappear() {
 	logoElem.offsetWidth = logoElem.offsetWidth;
 	logoElem.classList.add("logo_disappear");
 }
@@ -137,7 +137,7 @@ function mainboardAppear() {
 	// 보드데이타 설정
 	boardData.prevBoardNum = boardData.targetBoardNum = mainboardElem.getAttribute("data-currentboard");
 	boardData.prevBoard = boardData.targetBoard = document.querySelector("#board" + boardData.prevBoardNum);
-	
+
 	hideEveryBoard();
 	changeBoard(-1, boardData.targetBoard);
 }
@@ -160,19 +160,19 @@ function scrollHandler(e) {
 
 	for(i = 0; i < maxLength; i++) {
 		if((Images[currentBoardNum - 1][i])) {
-			if(Images[currentBoardNum - 1][i].getBoundingClientRect().top < windowHeight * 0.5)
+			if(Images[currentBoardNum - 1][i].getBoundingClientRect().top < windowHeight * 0.7)
 				appearImage(Images[currentBoardNum - 1][i]);
 		}
 		if((Texts[currentBoardNum - 1][i])) {
-			if(Texts[currentBoardNum - 1][i].getBoundingClientRect().top < windowHeight * 0.5)
+			if(Texts[currentBoardNum - 1][i].getBoundingClientRect().top < windowHeight * 0.7)
 				appearDiv(Texts[currentBoardNum - 1][i]);
 		}
 		if((Divs[currentBoardNum - 1][i])) {
-			if(Divs[currentBoardNum - 1][i].getBoundingClientRect().top < windowHeight * 0.5)
+			if(Divs[currentBoardNum - 1][i].getBoundingClientRect().top < windowHeight * 0.7)
 				appearDiv(Divs[currentBoardNum - 1][i]);
 		}
 	}
-	
+
 	if(currentBoardNum == 1) {
 		for(i = 0; i < personWrapper.length; i++) {
 			const posTop = personWrapper[i].getBoundingClientRect().top;
@@ -196,24 +196,24 @@ let headerTimer = null;
 
 function headerButtonAnimating(elem) {
 	elem.classList.remove("header_button_active");
-	if(elem.getAttribute("data-direction") === "open") 
+	if(elem.getAttribute("data-direction") === "open")
 		elem.setAttribute("data-direction", "close");
-	else 
-		elem.setAttribute("data-direction", "open");	
-				
-	// 애니메이션 재동작을 위한 꼼수 
+	else
+		elem.setAttribute("data-direction", "open");
+
+	// 애니메이션 재동작을 위한 꼼수
 	elem.offsetWidth = elem.offsetWidth;
 	elem.classList.add("header_button_active");
 }
 function headerToggle() {
 	isHeaderOpened = !isHeaderOpened;
 	if(headerTimer)
-		clearTimeout(headerTimer), headerTimer = null;		
+		clearTimeout(headerTimer), headerTimer = null;
 	if(!isHeaderOpened) {
 		headerTimer = setTimeout(function () {
 			headerConElem.style.display = "none";
 		} ,1000);
-	} else 
+	} else
 		headerConElem.style.display = "flex";
 
 	headerElem.offsetWidth = headerElem.offsetWidth;
@@ -227,21 +227,21 @@ function headerHandler(e) {
 	if(target == headerButtonConElem || target.parentNode == headerButtonConElem)
 		return headerToggle();
 	if(!isHeaderOpened) return;
-	
+
 	if(target.classList.contains("header_list_page")) {
 		const target_num = target.getAttribute("data-num");
-		
+
 		if(!target_num || target_num == boardData.targetBoardNum)
 			return headerToggle();
-			
+
 		if(boardData.prevBoardNum == -1) return;
-		
+
 		boardData.prevBoard = boardData.targetBoard;
 		boardData.prevBoardNum = boardData.targetBoardNum;
 		boardData.targetBoard = document.querySelector("#board" + target_num);
 		boardData.targetBoardNum = target_num;
 		mainboardElem.setAttribute("data-currentboard", target_num);
-			
+
 		setTimeout(function() {changeBoard(boardData.prevBoard, boardData.targetBoard);}, 1500);
 	} else if(target.classList.contains("header_lang_child")) {
 		if(!target.classList.contains("selected")) {
@@ -253,7 +253,7 @@ function headerHandler(e) {
 		}
 	}
 	headerToggle();
-}	
+}
 headerElem.addEventListener("click", headerHandler);
 
 // Initialize
@@ -261,7 +261,7 @@ headerElem.addEventListener("click", headerHandler);
 (function init() {
 	scrollHandler();
 	startFromLogo();
-	// mainboardAppear();                        
+	// mainboardAppear();
 })();
 
 // Appear Elements
@@ -275,7 +275,7 @@ function appearDiv(elem) {
 	if(!elem) return;
 	elem.offsetWidth = elem.offsetWidth;
 	elem.classList.add("appear_div");
-}	
+}
 function disappearImage(elem) {
 	if(!elem) return;
 	elem.offsetWidth = elem.offsetWidth;

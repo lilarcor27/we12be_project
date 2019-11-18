@@ -101,11 +101,11 @@ body {
 				<?php include "php/reply_read.php"; ?>
 				<div class="form_wrapper">
 					<div class="form_nickpass">
-						<input type="text" id="reply_nickname" required placeholder="이름" maxlength="10"><div class="form_error"></div>
-						<input type="text" id="reply_password" required placeholder="비번" maxlength="10"><div class="form_error"></div>
+						<input type="text" id="reply_nickname" required placeholder="이름" maxlength="10">
+						<input type="text" id="reply_password" required placeholder="비번" maxlength="10">
 					</div>
 					<div class="form_textbox">
-						<textarea rows="4" id="reply_content" required placeholder="내용"></textarea><div class="form_error">
+						<textarea rows="4" id="reply_content" required placeholder="내용"></textarea>
 					</div>
 					<div class="form_submit">
 						<button id="reply_submit">Submit</button>

@@ -21,6 +21,9 @@
 	/* padding: 4px 30px 4px 4px; */
 	width: 100%;
 	border-bottom: 1px solid #ccc;
+
+	opacity: 0.3;
+	transition: 1s;
 }
 .reply_nickname {
 	position: relative;

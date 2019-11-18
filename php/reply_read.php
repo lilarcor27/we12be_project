@@ -12,7 +12,7 @@ if(!$row) {
 	echo "<div class='reply_wrapper'> There is no reply. </div>";
 } else {
 	do {
-		echo "<div class='reply_wrapper' data-replynum='";
+		echo "<div class='reply_wrapper' style='opacity: 1' data-replynum='";
 		echo $row['id'];
 		echo "'>";
 			echo "<div class='reply_nickname'>";

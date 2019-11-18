@@ -1,5 +1,5 @@
-// Language | call from php
-
+// // Language | call from php
+//
 function checkLanguage(lang) {
 	let lang_texts;
 	if(lang === "kor") {
@@ -13,7 +13,6 @@ function checkLanguage(lang) {
 		document.documentElement.lang = 'en';
 		lang_texts = document.querySelectorAll('.lang_en');
 	}
-	for(let i = 0; i < lang_texts.length; i++) 
+	for(let i = 0; i < lang_texts.length; i++)
 		lang_texts[i].classList.add('selected');
-	
 }
