@@ -126,6 +126,8 @@ function touchStartHandler(e) {
 	const firstTouch = e.touches[0];
 	xFirst = firstTouch.clientX;
 	yFirst = firstTouch.clientY;
+
+	disableHelper();
 }
 
 function touchMoveHandler(e) {

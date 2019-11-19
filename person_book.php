@@ -37,8 +37,9 @@ body {
 		<h2 style="color: white">Loading</h2>
 	</div>
 	<div class="helper">
-		<div class="helper_icon"></div>
+		<div class="helper_icon turnpage"></div>
 	</div>
+	<!-- document.querySelector('.helper_icon').classList.add('write_success') -->
 	<div class="form_delete_container">
 		<div class="form_delete_wrapper">
 			<!-- <input type="hidden" id="pname_delete" name="pname" value="something">
@@ -120,7 +121,6 @@ body {
 		<div class="navi_button navi_forward"></div>
 	</div>
 </div>
-<?php include "php/reply_result.php"; ?>
 <script src="js/page.js"></script>
 <script src="js/check_language.js"></script>
 <script src="js/write_reply_ajaxquery.js"></script>
