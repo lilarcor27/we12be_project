@@ -10,13 +10,13 @@ if(!isset($_POST['pname']) || !isset($_POST['page_num'])) {
 $pname = $_POST['pname'];
 $page_num = $_POST['page_num'];
 
-$sqlquery = "SELECT * FROM lilarcor27.page_content WHERE person='$pname' AND page_num=$page_num";
+$sqlquery = "SELECT * FROM lilarcor277.page_content WHERE person='$pname' AND page_num=$page_num";
 
 $result_set = mysqli_query($conn, $sqlquery);
 $row = mysqli_fetch_array($result_set);
 
 if(!$row) {
-	$sqlquery2 = "INSERT INTO lilarcor27.page_content (person, page_num) VALUES ('$pname', $page_num)";
+	$sqlquery2 = "INSERT INTO lilarcor277.page_content (person, page_num) VALUES ('$pname', $page_num)";
 	mysqli_query($conn, $sqlquery2);
 }
 

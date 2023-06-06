@@ -52,7 +52,7 @@ header("Location: http://$server_ip/person_book.php?pname=$pname");
 	// 함수 라인
 
 function updateFile($conn, $myfile, $file_num) {	
-	global $pname, $page_num;
+	global $pname, $page_num, $file_dir, $allowed_ext;
 	
 	if(!isset($_FILES[$myfile]) || $_FILES[$myfile]["name"] == null)
 		return;
@@ -62,6 +62,9 @@ function updateFile($conn, $myfile, $file_num) {
 	$file_tmpname = $_FILES[$myfile]["tmp_name"];
 	$file_md5 = md5($file_name);
 	$file_ext = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
+
+	// echo "000000000000000" . $file_dir . "1111111111111111" . $pname;
+	echo $file_ext;
 	
 	if(!is_dir($file_dir)) // 디렉션이 없으면 디렉션을 만든다
 		mkdir($file_dir);
@@ -91,14 +94,14 @@ function updateFile($conn, $myfile, $file_num) {
 	
 	file_compressor("$file_md5.$file_ext", $file_dir, 70);
 	
-	$sqlquery = "UPDATE lilarcor27.page_content SET file$file_num='$file_md5.$file_ext' WHERE person='$pname' AND page_num=$page_num";
+	$sqlquery = "UPDATE lilarcor277.page_content SET file$file_num='$file_md5.$file_ext' WHERE person='$pname' AND page_num=$page_num";
 	mysqli_query($conn, $sqlquery);
 }
 
 function updateContent($conn, $content, $content_num) {
 	global $pname, $page_num;
 	
-	$sqlquery = "UPDATE lilarcor27.page_content SET content$content_num='$content' WHERE person='$pname' AND page_num=$page_num";
+	$sqlquery = "UPDATE lilarcor277.page_content SET content$content_num='$content' WHERE person='$pname' AND page_num=$page_num";
 	mysqli_query($conn, $sqlquery);
 }
 

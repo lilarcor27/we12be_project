@@ -14,7 +14,7 @@ $person = $_GET["pname"];
 
 $person = stringSanitaze($person, $conn);
 
-$sqlquery = "SELECT * FROM lilarcor27.page_content WHERE person='$person' ORDER BY 'page_num' DESC";
+$sqlquery = "SELECT * FROM lilarcor277.page_content WHERE person='$person' ORDER BY 'page_num' DESC";
 $result_set = mysqli_query($conn, $sqlquery);
 $row = mysqli_fetch_array($result_set);
 
@@ -34,8 +34,9 @@ if(!$row) {
 			$c1 = $row['content1'];
 			$c2 = $row['content2'];
 			$c3 = $row['content3'];
+			$f1 = $row['file1'];
 			echo "
-				<div class='page' id='p1'>
+				<div class='page' id='p1' background-image='$f1'>
 					<div class='p1_border'>
 						<div class='p1_title'>
 							<h1>

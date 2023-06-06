@@ -84,7 +84,12 @@ div {
 		<div id="logo_iron"></div>
 	</div>
 </div>
-<div id="mainboard" data-currentboard="1">
+<div id="for_picture_on_blur">
+	<img class="blur_arrow" id="onblur_left" value="-1" src="image/arrow.png" />
+	<img id="onblur_picture" src="" />
+	<img class="blur_arrow" id="onblur_right" value="1" src="image/arrow.png" />
+</div>
+<div id="mainboard" data-currentboard="<?php include "php/ordered_page.php"; ?>">
 	<div class="board" id="board1">
 		<div class="subboard" id="board11">
 			<div class="images images_left" id="b11image1">
@@ -253,7 +258,7 @@ div {
 				<h2 id="asdf3">Yeongjae SEO</h2>
 				<h1 id="asdf4">soop4200@gmail.com</h1>
 				<h2 id="asdf5">Junyeong KO</h2>
-				<h1 id="asdf6">lilarcor27@gmail.com</h1>
+				<h1 id="asdf6">lilarcor277@gmail.com</h1>
 			</div>
 		</div>
 	</div>

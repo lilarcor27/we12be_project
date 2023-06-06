@@ -3,6 +3,11 @@
 	display: flex;
 	width: 100%;
 	height: 100%;
+	transition: filter 0.5s;
+}
+
+#board1.blur_appear {
+	filter: blur(5px);
 }
 
 #board11 {
@@ -92,3 +97,47 @@
 		height: 133vw;
 	}
 }
+
+
+#for_picture_on_blur {
+	position: fixed;
+	display: none;
+	width: 0;
+	height: 0;
+	transition: 0.3s;
+	justify-content: center;
+    align-items: center;
+	z-index: 2;
+}
+
+#for_picture_on_blur.blur_appear {
+	display: flex;
+	width: 100vw;
+	height: 100vh;
+}
+
+.blur_arrow {
+	display: flex;
+	justify-content: center;
+	filter: invert(1);
+	width: 20%;
+	height: 10%;
+}
+
+#onblur_left {
+	align-items: left;
+	transform: scaleX(-1);
+}
+
+#onblur_right {
+	align-items: right;
+}
+
+#onblur_picture {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 60%;
+	
+}
+

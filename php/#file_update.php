@@ -24,6 +24,8 @@ $page_num = stringSanitaze($page_num, $conn);
 $file_dir = "../image/$pname/"; // 파일 디렉션
 $allowed_ext = array("jpg", "jpeg", "gif", "png"); // 가능 확장자
 
+echo $file_dir
+
 uploadFile($_FILES['myfile1']);
 uploadFile($_FILES['myfile2']);
 uploadFile($_FILES['myfile3']);
@@ -35,6 +37,7 @@ mysqli_close($conn);
 	// 함수 라인
 
 function uploadFile($myfile) {
+	global $file_dir
 	if(!isset($myfile) || $myfile["name"] == null)
 		return;
 	
@@ -72,7 +75,7 @@ function uploadFile($myfile) {
 	
 	file_compressor("$file_md5.$file_ext", $file_dir, 70);
 	
-	$sqlquery = "UPDATE lilarcor27.page_content SET file$file_num='$file_md5.$file_ext' WHERE person='$pname' AND page_num=$page_num";
+	$sqlquery = "UPDATE lilarcor277.page_content SET file$file_num='$file_md5.$file_ext' WHERE person='$pname' AND page_num=$page_num";
 	mysqli_query($conn, $sqlquery);
 }
 

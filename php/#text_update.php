@@ -19,7 +19,7 @@ if(!$conn) {
 $content = str_replace("\n", "<br>", $content);
 $content = stringSanitaze($content, $conn);
 
-$sqlquery = "UPDATE lilarcor27.page_content SET content$text_num='$content' WHERE person='$pname' AND page_num=$page_num";
+$sqlquery = "UPDATE lilarcor277.page_content SET content$text_num='$content' WHERE person='$pname' AND page_num=$page_num";
 mysqli_query($conn, $sqlquery);
 
 mysqli_close($conn);

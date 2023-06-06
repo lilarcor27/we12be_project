@@ -13,11 +13,11 @@ $reply_password = stringSanitaze($reply_password, $conn);
 $reply_num = stringSanitaze($reply_num, $conn);
 $pname = stringSanitaze($pname, $conn);
 
-$sqlquery = "SELECT * FROM lilarcor27.reply WHERE id=$reply_num AND password='$reply_password'";
+$sqlquery = "SELECT * FROM lilarcor277.reply WHERE id=$reply_num AND password='$reply_password'";
 $result_set = mysqli_query($conn, $sqlquery);
 $row = mysqli_fetch_array($result_set);
 if($row) {
-	$sqlquery = "UPDATE lilarcor27.reply SET reply_status=-1 WHERE id=$reply_num";
+	$sqlquery = "UPDATE lilarcor277.reply SET reply_status=-1 WHERE id=$reply_num";
 	mysqli_query($conn, $sqlquery);
 	$result = 100;
 }

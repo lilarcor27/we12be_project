@@ -3,7 +3,7 @@ echo "<div class='reply_container'>";
 
 include "db_info.php";
 
-$sqlquery = "SELECT * FROM lilarcor27.reply WHERE reply_status=1 AND content_index='$pname' ORDER BY id DESC";
+$sqlquery = "SELECT * FROM lilarcor277.reply WHERE reply_status=1 AND content_index='$pname' ORDER BY id DESC";
 $result_set = mysqli_query($conn, $sqlquery);
 
 $row = mysqli_fetch_array($result_set);

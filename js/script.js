@@ -98,16 +98,55 @@ function boardAppearingAnimation(elemNum, isAppear) {
 
 // Board1
 
+function setBlurPicture(person, num) {
+	document.querySelector("#onblur_picture").setAttribute("src", "image/" + person + "/" + num + ".jpg");
+	document.querySelector("#for_picture_on_blur").setAttribute("data-picnum", num);
+	document.querySelector("#for_picture_on_blur").setAttribute("data-person", person);
+}
+
 function board1Handler(e) {
 	const target = e.target;
 	const lang = (document.documentElement.lang == "kr") ? "kor" : "eng";
 	if(target.classList.contains("person_name") || target.classList.contains("person_picture")) {
-		boardDisappear(boardData.targetBoard);
-		location.href = "person_book.php" + "?pname=" + target.parentNode.getAttribute("id");
+		if(target.parentNode.id == "yeongjae" || target.parentNode.id == "tetsuya") {
+			Boards[0].classList.add("blur_appear");
+			document.querySelector("#for_picture_on_blur").classList.add("blur_appear");
+			setBlurPicture(target.parentNode.id, 1);
+		} else {
+			boardDisappear(boardData.targetBoard);
+			location.href = "person_book.php" + "?pname=" + target.parentNode.getAttribute("id");
+		}
 	}
 }
 
 Boards[0].addEventListener("click", board1Handler);
+
+// blurPic
+
+const LIMIT_OF_PIC = {
+	"yeongjae": 14,
+	"tetsuya": 21
+};
+
+function blurPicHandler(e) {
+	const target = e.target;
+	if(target.classList.contains("blur_arrow")) {
+		var currentPicNum = parseInt(document.querySelector("#for_picture_on_blur").getAttribute("data-picnum"));
+		var currentPerson = document.querySelector("#for_picture_on_blur").getAttribute("data-person");
+
+		if(0 < currentPicNum + parseInt(target.getAttribute("value")) && currentPicNum + parseInt(target.getAttribute("value")) <= LIMIT_OF_PIC[currentPerson]) {
+			setBlurPicture(currentPerson, currentPicNum + parseInt(target.getAttribute("value")));
+			// console.log(currentPicNum + parseInt(target.getAttribute("value")) , LIMIT_OF_PIC[currentPerson])
+		}
+	} else if(target.id == "onblur_picture") {
+		// empty
+	} else {
+		Boards[0].classList.remove("blur_appear");
+		document.querySelector("#for_picture_on_blur").classList.remove("blur_appear");
+	}
+}
+
+document.querySelector("#for_picture_on_blur").addEventListener("click", blurPicHandler);
 
 // Start Website
 

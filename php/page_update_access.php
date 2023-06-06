@@ -11,7 +11,7 @@ $pname = stringSanitaze($_POST["pname"], $conn);
 $page_num = stringSanitaze($_POST["page_num"], $conn);
 $password = stringSanitaze($_POST["pw_check"], $conn);
 
-$sqlquery = "SELECT * FROM lilarcor27.account WHERE username='$pname' AND pw='$password'";
+$sqlquery = "SELECT * FROM lilarcor277.account WHERE username='$pname' AND pw='$password'";
 $result_set = mysqli_query($conn, $sqlquery);
 $row = mysqli_fetch_array($result_set);
 

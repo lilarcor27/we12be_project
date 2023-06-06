@@ -20,9 +20,9 @@ $replynum = null;
 
 if($nickname && $password && $content) {
 	$sqlquery =
-//	"INSERT INTO lilarcor27.reply (nickname, password, content, content_index, date) " .
+//	"INSERT INTO lilarcor277.reply (nickname, password, content, content_index, date) " .
 //	"VALUES ('$nickname', '$password', '$content', '$id', NOW())";
-	"INSERT INTO lilarcor27.reply (nickname, password, content, content_index, date, reply_status, ip) " .
+	"INSERT INTO lilarcor277.reply (nickname, password, content, content_index, date, reply_status, ip) " .
 	"VALUES ('$nickname', '$password', '$content', '$pname', $time, 1, '$userip')";
 
 	if(!mysqli_query($conn, $sqlquery)) {
@@ -30,7 +30,7 @@ if($nickname && $password && $content) {
 		die($sqlquery);
 	}
 
-	$sqlquery = "SELECT * FROM lilarcor27.reply WHERE nickname='$nickname' AND date=$time";
+	$sqlquery = "SELECT * FROM lilarcor277.reply WHERE nickname='$nickname' AND date=$time";
 	$result_set = mysqli_query($conn, $sqlquery);
 	$row = mysqli_fetch_array($result_set);
 	if($row) {
